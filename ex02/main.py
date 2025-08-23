@@ -1,89 +1,118 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Программа для поиска количества элементов, больших заданного числа В,
-и их произведения в одномерном массиве А размерности N.
 
-Автор: Практика
-Дата: 2024
-"""
+def analyze_matrix(matrix):
+    """
+    Анализирует матрицу и находит сумму элементов главной диагонали
+    и количество положительных элементов.
+    """
+    if not matrix or not matrix[0]:
+        return 0, 0
+    
+    rows = len(matrix)
+    cols = len(matrix[0])
+    
+    # Сумма элементов главной диагонали
+    diagonal_sum = 0
+    min_dim = min(rows, cols)
+    for i in range(min_dim):
+        diagonal_sum += matrix[i][i]
+    
+    # Количество положительных элементов
+    positive_count = 0
+    for row in matrix:
+        for element in row:
+            if element > 0:
+                positive_count += 1
+    
+    return diagonal_sum, positive_count
 
-def input_array():
 
-    while True:
-        try:
-            n = int(input("Введите размерность массива N: "))
-            if n <= 0:
-                print("Размерность должна быть положительным числом!")
-                continue
-            break
-        except ValueError:
-            print("Ошибка! Введите целое число.")
+def input_matrix():
+    """
+    Вводит матрицу с клавиатуры.
+    """
+    try:
+        n = int(input("Введите количество строк N: "))
+        m = int(input("Введите количество столбцов M: "))
+        
+        if n <= 0 or m <= 0:
+            print("Ошибка: размеры матрицы должны быть положительными числами!")
+            return []
+        
+        print(f"Введите элементы матрицы {n}×{m}:")
+        matrix = []
+        
+        for i in range(n):
+            row = []
+            for j in range(m):
+                element = float(input(f"Элемент [{i+1}][{j+1}]: "))
+                row.append(element)
+            matrix.append(row)
+        
+        return matrix
     
-    array = []
-    print(f"Введите {n} элементов массива:")
-    
-    for i in range(n):
-        while True:
-            try:
-                element = float(input(f"Элемент {i+1}: "))
-                array.append(element)
-                break
-            except ValueError:
-                print("Ошибка! Введите число.")
-    
-    return array
+    except ValueError:
+        print("Ошибка: введите корректное числовое значение!")
+        return []
 
-def input_threshold():
 
-    while True:
-        try:
-            b = float(input("Введите число B для сравнения: "))
-            return b
-        except ValueError:
-            print("Ошибка! Введите число.")
+def display_matrix(matrix):
+    """
+    Выводит матрицу в красивом формате.
+    """
+    if not matrix:
+        print("Матрица пуста.")
+        return
+    
+    print("\nМатрица:")
+    for row in matrix:
+        print(" ".join(f"{element:8.2f}" for element in row))
 
-def find_elements_greater_than(array, threshold):
+
+def display_results(matrix, diagonal_sum, positive_count):
+    """
+    Выводит результаты анализа матрицы.
+    """
+    print("\n" + "="*50)
+    print("РЕЗУЛЬТАТЫ АНАЛИЗА МАТРИЦЫ")
+    print("="*50)
     
-    count = 0
-    product = 1
+    display_matrix(matrix)
     
-    for element in array:
-        if element > threshold:
-            count += 1
-            product *= element
+    print(f"\nРазмер матрицы: {len(matrix)}×{len(matrix[0]) if matrix else 0}")
+    print(f"Сумма элементов главной диагонали: {diagonal_sum}")
+    print(f"Количество положительных элементов: {positive_count}")
     
-    return count, product
+    if matrix:
+        total_elements = len(matrix) * len(matrix[0])
+        positive_percentage = (positive_count / total_elements) * 100
+        print(f"Процент положительных элементов: {positive_percentage:.1f}%")
+    
+    print("="*50)
+
 
 def main():
-
-    print("=" * 50)
-    print("ПРОГРАММА ДЛЯ ПОИСКА ЭЛЕМЕНТОВ БОЛЬШЕ ЗАДАННОГО ЧИСЛА")
-    print("=" * 50)
+    """
+    Основная функция программы.
+    """
+    print("АНАЛИЗ МАТРИЦЫ")
+    print("Поиск суммы элементов главной диагонали и количества положительных элементов")
+    print("-" * 50)
     
-    # Ввод данных
-    array = input_array()
-    threshold = input_threshold()
+    # Ввод матрицы
+    matrix = input_matrix()
     
-    print("\n" + "=" * 50)
-    print("ИСХОДНЫЕ ДАННЫЕ:")
-    print(f"Массив A: {array}")
-    print(f"Число B: {threshold}")
-    print("=" * 50)
+    if not matrix:
+        print("Программа завершена из-за ошибки ввода.")
+        return
     
-    # Вычисление результата
-    count, product = find_elements_greater_than(array, threshold)
+    # Анализ матрицы
+    diagonal_sum, positive_count = analyze_matrix(matrix)
     
     # Вывод результатов
-    print("\nРЕЗУЛЬТАТЫ:")
-    print(f"Количество элементов больше {threshold}: {count}")
-    
-    if count > 0:
-        print(f"Произведение элементов больше {threshold}: {product}")
-    else:
-        print("Элементов больше заданного числа не найдено.")
-    
-    print("=" * 50)
+    display_results(matrix, diagonal_sum, positive_count)
+
 
 if __name__ == "__main__":
     main() 

@@ -1,151 +1,182 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Пример использования программы для поиска элементов больше заданного числа.
 
-Автор: Практика
-Дата: 2024
-"""
+from main import analyze_matrix, display_matrix, display_results
 
-from main import find_elements_greater_than
 
 def example_1():
-    """
-    Пример 1: Базовый случай
-    """
-    print("ПРИМЕР 1: Базовый случай")
+    """Пример 1: Квадратная матрица 3x3."""
+    print("ПРИМЕР 1: Квадратная матрица 3x3")
     print("-" * 40)
     
-    array = [1, 5, 3, 8, 2, 10]
-    threshold = 4
+    matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
     
-    print(f"Массив: {array}")
-    print(f"Число B: {threshold}")
-    
-    count, product = find_elements_greater_than(array, threshold)
-    
-    print(f"Результат:")
-    print(f"  Количество элементов > {threshold}: {count}")
-    print(f"  Произведение: {product}")
-    print()
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
 
 def example_2():
-    """
-    Пример 2: Все элементы больше B
-    """
-    print("ПРИМЕР 2: Все элементы больше B")
+    """Пример 2: Прямоугольная матрица 2x4."""
+    print("\nПРИМЕР 2: Прямоугольная матрица 2x4")
     print("-" * 40)
     
-    array = [10, 20, 30, 40, 50]
-    threshold = 5
+    matrix = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8]
+    ]
     
-    print(f"Массив: {array}")
-    print(f"Число B: {threshold}")
-    
-    count, product = find_elements_greater_than(array, threshold)
-    
-    print(f"Результат:")
-    print(f"  Количество элементов > {threshold}: {count}")
-    print(f"  Произведение: {product}")
-    print()
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
 
 def example_3():
-    """
-    Пример 3: Ни один элемент не больше B
-    """
-    print("ПРИМЕР 3: Ни один элемент не больше B")
+    """Пример 3: Матрица с отрицательными элементами."""
+    print("\nПРИМЕР 3: Матрица с отрицательными элементами")
     print("-" * 40)
     
-    array = [1, 2, 3, 4, 5]
-    threshold = 10
+    matrix = [
+        [1, -2, 3],
+        [-4, 5, -6],
+        [7, -8, 9]
+    ]
     
-    print(f"Массив: {array}")
-    print(f"Число B: {threshold}")
-    
-    count, product = find_elements_greater_than(array, threshold)
-    
-    print(f"Результат:")
-    print(f"  Количество элементов > {threshold}: {count}")
-    print(f"  Произведение: {product}")
-    print()
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
 
 def example_4():
-    """
-    Пример 4: Отрицательные числа
-    """
-    print("ПРИМЕР 4: Отрицательные числа")
+    """Пример 4: Матрица с нулевыми элементами."""
+    print("\nПРИМЕР 4: Матрица с нулевыми элементами")
     print("-" * 40)
     
-    array = [-5, -2, 0, 3, 7, -1]
-    threshold = -3
+    matrix = [
+        [0, 1, 0],
+        [1, 0, 1],
+        [0, 1, 0]
+    ]
     
-    print(f"Массив: {array}")
-    print(f"Число B: {threshold}")
-    
-    count, product = find_elements_greater_than(array, threshold)
-    
-    print(f"Результат:")
-    print(f"  Количество элементов > {threshold}: {count}")
-    print(f"  Произведение: {product}")
-    print()
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
 
 def example_5():
-    """
-    Пример 5: Дробные числа
-    """
-    print("ПРИМЕР 5: Дробные числа")
+    """Пример 5: Матрица с одним элементом."""
+    print("\nПРИМЕР 5: Матрица с одним элементом")
     print("-" * 40)
     
-    array = [1.5, 2.7, 3.2, 4.1, 2.0]
-    threshold = 2.5
+    matrix = [[5]]
     
-    print(f"Массив: {array}")
-    print(f"Число B: {threshold}")
-    
-    count, product = find_elements_greater_than(array, threshold)
-    
-    print(f"Результат:")
-    print(f"  Количество элементов > {threshold}: {count}")
-    print(f"  Произведение: {product}")
-    print()
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
 
 def example_6():
-    """
-    Пример 6: Пустой массив
-    """
-    print("ПРИМЕР 6: Пустой массив")
+    """Пример 6: Большая матрица 5x5."""
+    print("\nПРИМЕР 6: Большая матрица 5x5")
     print("-" * 40)
     
-    array = []
-    threshold = 5
+    matrix = [
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25]
+    ]
     
-    print(f"Массив: {array}")
-    print(f"Число B: {threshold}")
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
+
+def example_7():
+    """Пример 7: Матрица со всеми отрицательными элементами."""
+    print("\nПРИМЕР 7: Матрица со всеми отрицательными элементами")
+    print("-" * 40)
     
-    count, product = find_elements_greater_than(array, threshold)
+    matrix = [
+        [-1, -2, -3],
+        [-4, -5, -6],
+        [-7, -8, -9]
+    ]
     
-    print(f"Результат:")
-    print(f"  Количество элементов > {threshold}: {count}")
-    print(f"  Произведение: {product}")
-    print()
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
+
+def example_8():
+    """Пример 8: Широкая матрица (больше столбцов, чем строк)."""
+    print("\nПРИМЕР 8: Широкая матрица 2x5")
+    print("-" * 40)
+    
+    matrix = [
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10]
+    ]
+    
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
+
+def example_9():
+    """Пример 9: Высокая матрица (больше строк, чем столбцов)."""
+    print("\nПРИМЕР 9: Высокая матрица 4x2")
+    print("-" * 40)
+    
+    matrix = [
+        [1, 2],
+        [3, 4],
+        [5, 6],
+        [7, 8]
+    ]
+    
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
+
+def example_10():
+    """Пример 10: Пустая матрица."""
+    print("\nПРИМЕР 10: Пустая матрица")
+    print("-" * 40)
+    
+    matrix = []
+    
+    diagonal_sum, positive_count = analyze_matrix(matrix)
+    display_results(matrix, diagonal_sum, positive_count)
+
 
 def main():
-    """
-    Запуск всех примеров
-    """
-    print("ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ ПРОГРАММЫ")
-    print("=" * 50)
-    print()
+    """Основная функция для запуска примеров."""
+    print("ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ ПРОГРАММЫ АНАЛИЗА МАТРИЦ")
+    print("=" * 60)
     
-    example_1()
-    example_2()
-    example_3()
-    example_4()
-    example_5()
-    example_6()
+    examples = [
+        example_1,
+        example_2,
+        example_3,
+        example_4,
+        example_5,
+        example_6,
+        example_7,
+        example_8,
+        example_9,
+        example_10
+    ]
     
-    print("=" * 50)
+    for i, example_func in enumerate(examples, 1):
+        try:
+            example_func()
+        except Exception as e:
+            print(f"Ошибка в примере {i}: {e}")
+        
+        if i < len(examples):
+            print("\n" + "="*60)
+    
+    print("\n" + "="*60)
     print("ВСЕ ПРИМЕРЫ ЗАВЕРШЕНЫ")
+
 
 if __name__ == "__main__":
     main() 
