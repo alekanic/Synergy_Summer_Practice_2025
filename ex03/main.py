@@ -1,14 +1,9 @@
 import random
 
 def generate_random_sequence():
-    """
-    Генерирует последовательность случайных чисел до тех пор, 
-    пока пользователь не введёт ноль.
-    Выводит все числа, кроме последнего (нуля).
-    """
     numbers = []
     
-    print("Программа генерирует последовательность случайных чисел.")
+    print("Программа генерирует случайные числа.")
     print("Введите 0, чтобы остановить генерацию.")
     print("-" * 40)
     
@@ -16,6 +11,7 @@ def generate_random_sequence():
         # Генерируем случайное число от 1 до 100
         random_number = random.randint(1, 100)
         numbers.append(random_number)
+        print(f"Сгенерировано число: {random_number}")
         
         # Запрашиваем у пользователя ввод
         try:
@@ -24,6 +20,8 @@ def generate_random_sequence():
             
             if user_number == 0:
                 break
+            else:
+                print(f"Вы ввели: {user_number}")
                 
         except ValueError:
             print("Ошибка! Пожалуйста, введите целое число.")
