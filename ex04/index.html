@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор дней до Нового года</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор дней до Нового года</h1>
+        
+        <div class="input-section">
+            <input type="text" id="dateInput" placeholder="Введите дату в формате дд.мм.гггг" maxlength="10">
+            <button id="calculateBtn">Рассчитать</button>
+        </div>
+        
+        <div class="results">
+            <div id="daysResult" class="result-box">
+                <h3>Дни до Нового года:</h3>
+                <p id="daysText">-</p>
+            </div>
+            
+            <div id="leapYearResult" class="result-box">
+                <h3>Високосный год:</h3>
+                <p id="leapYearText">-</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
